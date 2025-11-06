@@ -2,10 +2,13 @@ import Event from '../models/Event.js'
 
 export const createEvent= async (req, res) => {
 try {
-const { title, startTime, endTime } = req.body;
+const { title , description, startTime, endTime } = req.body;
 if (!title || !startTime || !endTime) return res.status(400).json({ message: 'Missing fields' });
 const event = await Event.create({ title, description, startTime, endTime, owner: req.user._id });
-res.json(event);
+ res.status(201).json({
+      message: "Event created successfully",
+      event,
+    });
 } catch (err) {
 res.status(500).json({ message: 'Create event failed', error: err.message });
 }
@@ -59,7 +62,7 @@ try {
 const event = await Event.findById(req.params.id);
 if (!event) return res.status(404).json({ message: 'Event not found' });
 if (!event.owner.equals(req.user._id)) return res.status(403).json({ message: 'Not authorized' });
-await event.remove();
+await event.deleteOne();
 res.json({ message: 'Deleted' });
 } catch (err) {
 res.status(500).json({ message: 'Delete failed', error: err.message });

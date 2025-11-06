@@ -1,6 +1,7 @@
 import Event from '../models/Event.js'
 import SwapRequest from '../models/SwapRequest.js';
 import User from '../models/User.js';
+import mongoose from 'mongoose';
 
 
 export const slotSwappable = async (req, res) => {
@@ -160,3 +161,28 @@ export const swapResponse =async (req,res)=>{
     return res.status(500).json({ message: 'Swap response failed', error: err.message });
   }
 }
+
+export const incoming =async (req, res) => {
+  try {
+    const incoming = await SwapRequest.find({ requestedTo: req.user._id }).sort({ createdAt: -1 })
+      .populate('requester', 'name email')
+      .populate('mySlot')
+      .populate('theirSlot');
+    res.json(incoming);
+  } catch (err) {
+    console.error('Incoming requests error', err);
+    res.status(500).json({ message: 'Failed', error: err.message });
+  }
+}
+
+export const outgoing = async (req, res) => {
+  try {
+    const outgoing = await SwapRequest.find({ requester: req.user._id }).sort({ createdAt: -1 })
+      .populate('requestedTo', 'name email')
+      .populate('mySlot')
+      .populate('theirSlot');
+    res.json(outgoing);
+  } catch (err) {
+    console.error('Outgoing requests error', err);
+    res.status(500).json({ message: 'Failed', error: err.message });
+  }}

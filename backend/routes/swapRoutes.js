@@ -1,6 +1,6 @@
 import express from 'express';
 import auth from '../middleware/authMiddleware.js';
-import { slotSwappable, swapReq, swapResponse } from '../controllers/swapController.js';
+import { incoming, outgoing, slotSwappable, swapReq, swapResponse } from '../controllers/swapController.js';
 
 const router = express.Router();
 
@@ -22,4 +22,14 @@ router.post('/swap-request', auth, swapReq);
  */
 router.post('/swap-response/:requestId', auth, swapResponse);
 
+/**
+ * GET /api/requests/incoming
+ * GET /api/requests/outgoing
+ * simple convenience endpoints for client
+ */
+router.get('/requests/incoming', auth, incoming);
+
+router.get('/requests/outgoing', auth, outgoing);
+
 export default router;
+
