@@ -185,4 +185,4 @@ export const outgoing = async (req, res) => {
   } catch (err) {
     console.error('Outgoing requests error', err);
     res.status(500).json({ message: 'Failed', error: err.message });
-  }}
+  }};
