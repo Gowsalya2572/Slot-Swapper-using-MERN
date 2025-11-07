@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io(import.meta.env.VITE_API_URL || "http://localhost:4000", {
+const socket = io(import.meta.env.VITE_API_URL || "http://localhost:4000" || "https://slot-swapper-backend-six.vercel.app/api", {
   autoConnect: false,
 });
 
