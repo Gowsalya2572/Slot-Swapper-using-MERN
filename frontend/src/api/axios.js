@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const api = axios.create({
-baseURL: "https://slot-swapper-backend-six.vercel.app/",
+baseURL: "https://slot-swapper-backend-six.vercel.app/api",
 })
 
 
