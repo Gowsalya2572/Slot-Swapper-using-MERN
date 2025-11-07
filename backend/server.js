@@ -27,8 +27,8 @@ app.get('/health', (req, res) => res.json({ ok: true, time: new Date() }));
 const server = http.createServer(app);
 import { Server } from 'socket.io';
 const io = new Server(server, {
-  cors: { origin: ["https://slot-swapper-five-eta.vercel.app"], // your frontend URL
-    methods: ["GET", "POST"], },
+  cors: { origin: ["https://slot-swapper-five-eta.vercel.app"], 
+    methods: ["GET", "POST", "PUT", "DELETE"], },
 });
 global.io = io; // quick access from routes for emitting
 
