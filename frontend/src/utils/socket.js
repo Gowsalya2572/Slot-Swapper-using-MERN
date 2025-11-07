@@ -1,7 +1,8 @@
 import { io } from "socket.io-client";
 
-const socket = io(import.meta.env.VITE_API_URL || "http://localhost:4000" || "https://slot-swapper-backend-six.vercel.app/api", {
+const socket = io(import.meta.env.VITE_API_URL, {
   autoConnect: false,
+  transports: ["websocket"], // ensures faster connection
 });
 
 socket.on("connect", () => console.log("🟢 Connected to socket server"));
