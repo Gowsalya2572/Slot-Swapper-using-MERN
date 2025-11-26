@@ -14,4 +14,4 @@ Tech Stack
 |   Auth         | JWT (JSON Web Token)                                      |
 |   Deployment   | Vercel (Backend) + Vercel (Frontend)                      |
 
-Deploy link - slot-swapper-five-eta.vercel.app
+Deploy link - https://slot-swapper-five-eta.vercel.app/
