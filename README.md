@@ -13,3 +13,5 @@ Tech Stack
 |   Real-time    | Socket.IO                                                 |
 |   Auth         | JWT (JSON Web Token)                                      |
 |   Deployment   | Vercel (Backend) + Vercel (Frontend)                      |
+
+Deploy link - slot-swapper-five-eta.vercel.app
